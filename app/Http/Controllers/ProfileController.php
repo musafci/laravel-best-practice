@@ -26,6 +26,21 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        /**
+         * For raw php system file upload/move
+        */
+        // move_uploaded_file($from, $to);
+
+        
+
+        // dd($request->files);
+
+        // dd($request->file('avatar')->store('avatar'));
+        // dd($request->file('avatar')->storeAs('avatar', 'avatar.jpeg'));
+        $request->file('avatar')->store('avatar', 'public');
+        
+        
+        ;
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {
