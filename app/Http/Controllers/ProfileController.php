@@ -37,10 +37,9 @@ class ProfileController extends Controller
 
         // dd($request->file('avatar')->store('avatar'));
         // dd($request->file('avatar')->storeAs('avatar', 'avatar.jpeg'));
-        $request->file('avatar')->store('avatar', 'public');
+        // $request->file('avatar')->store('avatar', 'public');
+        $request->file('avatar')->store('avatar', 's3');
         
-        
-        ;
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {
